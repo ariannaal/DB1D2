@@ -1,6 +1,7 @@
 package DAO;
 
 import entities.Evento;
+import exceptions.NotFoundEx;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
@@ -25,5 +26,20 @@ public class EventoDAO {
         transaction.commit();
 
         System.out.println("L'evento " + evento.getTitolo() + " e' stato salvato con successo!");
+    }
+
+    public Evento findById(int id) {
+        Evento found = em.find(Evento.class, id); // classe dell'identia e id da cercare
+        if (found == null) throw new NotFoundEx(id);
+        return found;
+    }
+
+    public void findByIdAndDelete(int id) {
+        Evento found = this.findById(id);
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        em.remove(found);
+        transaction.commit();
+        System.out.println("L'evento' " + found.getTitolo() + " è stato eliminato con successo.");
     }
 }
