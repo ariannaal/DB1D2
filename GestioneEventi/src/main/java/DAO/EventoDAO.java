@@ -25,7 +25,7 @@ public class EventoDAO {
         //evento viene salvato al concludersi della transazione
         transaction.commit();
 
-        System.out.println("L'evento " + evento.getTitolo() + " e' stato salvato con successo!");
+        System.out.println("L'evento " + evento.getTitle() + " e' stato salvato con successo!");
     }
 
     public Evento findById(int id) {
@@ -40,6 +40,6 @@ public class EventoDAO {
         transaction.begin();
         em.remove(found);
         transaction.commit();
-        System.out.println("L'evento' " + found.getTitolo() + " è stato eliminato con successo.");
+        System.out.println("L'evento' " + found.getTitle() + " è stato eliminato con successo.");
     }
 }
