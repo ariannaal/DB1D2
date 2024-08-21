@@ -11,7 +11,7 @@ public class Partecipazione {
     private int id;
 
     @OneToOne
-    @PrimaryKeyJoinColumn(name = "persona_id")
+    @JoinColumn(name = "id_persona")
     private Persona persona;
 
 
@@ -19,17 +19,18 @@ public class Partecipazione {
     @JoinColumn(name = "evento_id")
     private Evento evento;
 
-    @Column(name = "stato_partecipazione")
-    private Stato stato_partecipazione;
+    @Column(name = "stato")
+    @Enumerated(EnumType.STRING)
+    private Stato stato;
 
     public Partecipazione() {
     }
 
-    public Partecipazione(int id, Persona persona, Evento evento, Stato stato_partecipazione) {
+    public Partecipazione(int id, Persona persona, Evento evento, Stato stato) {
         this.id = id;
         this.persona = persona;
         this.evento = evento;
-        this.stato_partecipazione = stato_partecipazione;
+        this.stato = stato;
     }
 
     public int getId() {
@@ -53,10 +54,10 @@ public class Partecipazione {
     }
 
     public Stato getStato_partecipazione() {
-        return stato_partecipazione;
+        return stato;
     }
 
     public void setStato_partecipazione(Stato stato_partecipazione) {
-        this.stato_partecipazione = stato_partecipazione;
+        this.stato = stato_partecipazione;
     }
 }

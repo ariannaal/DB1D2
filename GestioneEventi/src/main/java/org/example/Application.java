@@ -24,7 +24,6 @@ public class Application {
 
     public static void main(String[] args) {
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("DB1D2");
         System.out.println("Ciao");
         EntityManager em = emf.createEntityManager();
         EventoDAO ed = new EventoDAO(em);
